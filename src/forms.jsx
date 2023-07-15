@@ -2,10 +2,10 @@ import React from "react";
 
 export default function Forms(props) {
     const difficulties = [
-        ["Eazy", "green"],
-        ["Normal", "blue"],
-        ["Hard", "yellow"],
-        ["Very Hard", "red"],
+        { text: "Eazy", color: "green" },
+        { text: "Normal", color: "blue" },
+        { text: "Hard", color: "yellow" },
+        { text: "Very Hard", color: "red" },
     ];
 
     function handleSubmit(e) {
@@ -34,15 +34,17 @@ export default function Forms(props) {
     }
 
     return (
-        <div className="flex ">
+        <div className="flex">
             {difficulties.map((ele, index) => (
                 <button
                     key={index}
-                    className={`block border p-1 m-1 lg:m-5 lg:p-5 hover:text-${ele[1]}-500 hover:font-bold`}
+                    className="block border p-1 m-1 lg:m-5 lg:p-5 hover:font-bold"
+                    style={{ "--hover-color": ele.color }}
                     onClick={handleSubmit}
                 >
-                    {ele[0]}
+                    {ele.text}
                 </button>
+
             ))}
         </div>
     );

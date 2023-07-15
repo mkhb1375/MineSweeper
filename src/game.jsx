@@ -11,6 +11,8 @@ export default function Game(props) {
     const [board, setBoard] = useState(new Minesweeper.Board(rows, bombs));
     const [gameState, setGameState] = useState("")
     const [reloadCount, setReloadCount] = useState(0)
+    const messageSm = "Hold to flag"
+    const messageLg = "Right Click to flag"
 
     useEffect(()=>{
         setBoard(new Minesweeper.Board(rows, bombs))
@@ -75,8 +77,10 @@ export default function Game(props) {
                 <span className="block flex justify-center ">
                     <button onClick={reload} className="mb-[30px] lg:mb-[60px] border p-1 rounded hover:text-blue-500  lg:text-5xl text-4xl  align-middle;" >⟲</button>
                 </span>
-
-
+                
+                <span className="flex lg:text-xl text-xs justify-center m-1 p-1">
+                    <h1>{screen.width > 1000 ? messageLg : messageSm}</h1>
+                </span>
                 <Board
                     board={board}
                     updateGame={updateGame}
